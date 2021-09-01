@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-kwiklinksaws-staging-165834-authRole",
+      "UnauthRoleArn": "arn:aws:iam::596121748167:role/amplify-kwiklinksaws-staging-165834-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::596121748167:role/amplify-kwiklinksaws-staging-165834-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-kwiklinksaws-staging-165834-deployment",
+      "UnauthRoleName": "amplify-kwiklinksaws-staging-165834-unauthRole",
+      "StackName": "amplify-kwiklinksaws-staging-165834",
+      "StackId": "arn:aws:cloudformation:us-west-2:596121748167:stack/amplify-kwiklinksaws-staging-165834/83143ba0-09b3-11ec-b03e-0afc4e43b6a9",
+      "AmplifyAppId": "d2ae2a1yjnqoha"
+    },
+    "categories": {
+      "auth": {
+        "kwiklinksaws": {}
+      }
+    }
+  }
+}
