@@ -1,0 +1,27 @@
+type Item @model {
+  id: ID!
+  title: String!
+  category: String!
+  description: String!
+  email: String!
+  lat: String!
+  lon: String!
+  latLong: String!
+  phone: String!
+  price: String!
+  textNumber: String!
+  url: String!
+  ownerID: String!
+  image: String!
+  images: [Image] @connection(keyName: "byItem", fields: ["id"])
+}
+
+type Image @model @key(name: "byItem", fields: ["itemID"]) {
+  id: ID!
+  title: String!
+  itemID: ID!
+  picURL: String!
+  item: Item @connection(fields: ["itemID"])
+  
+}
+
