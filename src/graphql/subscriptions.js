@@ -18,6 +18,10 @@ export const onCreateItem = /* GraphQL */ `
       url
       ownerID
       image
+      image2
+      image3
+      image4
+      image5
       images {
         items {
           id
@@ -51,6 +55,10 @@ export const onUpdateItem = /* GraphQL */ `
       url
       ownerID
       image
+      image2
+      image3
+      image4
+      image5
       images {
         items {
           id
@@ -84,6 +92,10 @@ export const onDeleteItem = /* GraphQL */ `
       url
       ownerID
       image
+      image2
+      image3
+      image4
+      image5
       images {
         items {
           id
@@ -122,6 +134,10 @@ export const onCreateImage = /* GraphQL */ `
         url
         ownerID
         image
+        image2
+        image3
+        image4
+        image5
         images {
           nextToken
         }
@@ -155,6 +171,10 @@ export const onUpdateImage = /* GraphQL */ `
         url
         ownerID
         image
+        image2
+        image3
+        image4
+        image5
         images {
           nextToken
         }
@@ -188,6 +208,10 @@ export const onDeleteImage = /* GraphQL */ `
         url
         ownerID
         image
+        image2
+        image3
+        image4
+        image5
         images {
           nextToken
         }

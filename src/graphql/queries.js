@@ -18,6 +18,10 @@ export const getItem = /* GraphQL */ `
       url
       ownerID
       image
+      image2
+      image3
+      image4
+      image5
       images {
         items {
           id
@@ -56,6 +60,10 @@ export const listItems = /* GraphQL */ `
         url
         ownerID
         image
+        image2
+        image3
+        image4
+        image5
         images {
           nextToken
         }
@@ -88,6 +96,10 @@ export const getImage = /* GraphQL */ `
         url
         ownerID
         image
+        image2
+        image3
+        image4
+        image5
         images {
           nextToken
         }
@@ -126,6 +138,10 @@ export const listImages = /* GraphQL */ `
           url
           ownerID
           image
+          image2
+          image3
+          image4
+          image5
           createdAt
           updatedAt
         }
