@@ -13,6 +13,7 @@ const initialFormState = { title: '', category: '', description: '', email: '', 
 function App() {
     const [items, setItems] = useState([]);
     const [formData, setFormData] = useState(initialFormState);
+    const [state, setState] = useState('stateVar');
 
     useEffect(() => {
         fetchItems();
@@ -148,83 +149,84 @@ function App() {
         fetchItems();
     }
 
-    return (
+    async function homeClick()
+    {
         
-        <div className="App">
-            <h1>Kwik-Links</h1>
-            <div id="mainControls">
-              
-            <button id="home" class="button button1">
-                    Home
-            </button>
-                <button id="search" class="button button1">
-                    Search Items
-            </button>
-                <button id="list" class="button button2">
-                    New Item
-            </button>
-            </div>
-            
+        setState('home');
+    }
+
+    async function searchClick() {
+        
+        setState('search');
+    }
+    async function newClick() {
+        
+        setState('new');
+    }
+
+    function NewItem() {
+        return (
             <div>
+        <div>
             <input
                 onChange={e => setFormData({ ...formData, 'title': e.target.value })}
                 placeholder="Title"
                 value={formData.title}
-                />  
-            </div>
+            />
+        </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'description': e.target.value })}
-                placeholder="Description"
-                value={formData.description}
+                <input
+                    onChange={e => setFormData({ ...formData, 'description': e.target.value })}
+                    placeholder="Description"
+                    value={formData.description}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'category': e.target.value })}
-                placeholder="Category"
-                value={formData.category}
+                <input
+                    onChange={e => setFormData({ ...formData, 'category': e.target.value })}
+                    placeholder="Category"
+                    value={formData.category}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'email': e.target.value })}
-                placeholder="Email"
-                value={formData.email}
+                <input
+                    onChange={e => setFormData({ ...formData, 'email': e.target.value })}
+                    placeholder="Email"
+                    value={formData.email}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'phone': e.target.value })}
-                placeholder="Contact Phone"
-                value={formData.phone}
+                <input
+                    onChange={e => setFormData({ ...formData, 'phone': e.target.value })}
+                    placeholder="Contact Phone"
+                    value={formData.phone}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'textNumber': e.target.value })}
-                placeholder="Text Number"
-                value={formData.textNumber}
+                <input
+                    onChange={e => setFormData({ ...formData, 'textNumber': e.target.value })}
+                    placeholder="Text Number"
+                    value={formData.textNumber}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'price': e.target.value })}
-                placeholder="Price"
-                value={formData.price}
+                <input
+                    onChange={e => setFormData({ ...formData, 'price': e.target.value })}
+                    placeholder="Price"
+                    value={formData.price}
                 />
             </div>
             <div>
-            <input
-                onChange={e => setFormData({ ...formData, 'url': e.target.value })}
-                placeholder="More Info URL"
-                value={formData.url}
+                <input
+                    onChange={e => setFormData({ ...formData, 'url': e.target.value })}
+                    placeholder="More Info URL"
+                    value={formData.url}
                 />
             </div>
             <div>
-            <input
-                type="file"
-                onChange={onChange}
+                <input
+                    type="file"
+                    onChange={onChange}
                 />
             </div>
             <div>
@@ -251,46 +253,50 @@ function App() {
                     onChange={onChange5}
                 />
             </div>
-            <button onClick={createItem}>Create Item</button>
+                <button onClick={createItem}>Create Item</button>
+                </div>
+            )
+    };
+
+    function ShowItems() {
+        return (
+            
             <div style={{ marginBottom: 30 }}>
                 {
                     items.map(item => (
                         <div key={item.id || item.title}>
-                            <h2>{item.title}</h2>
-                            <p>{item.description}</p>
-                            <p>{item.category}</p>
-                            <p>{item.email}</p>
-                            <p>{item.textNumber}</p>
-                            <p>{item.phone}</p>
-                            <p>{item.url}</p>
-                            <p>{item.price}</p>
-                            <button onClick={() => deleteItem(item)}>Delete item</button>
                             {
                                 item.image && <img src={item.image} style={{ width: 400 }} />
-                               
                             }
-                            
-                            {
-                                item.image2 && <img src={item.image2} style={{ width: 400 }} />
-
-                            }
-                            {
-                                item.image3 && <img src={item.image3} style={{ width: 400 }} />
-
-                            }
-                            {
-                                item.image4 && <img src={item.image4} style={{ width: 400 }}/>
-
-                            }
-                            {
-                                item.image5 && <img src={item.image5} style={{ width: 400 }} />
-
-                            }
+                            <h2>{item.title}</h2>
+                            <p>{item.price}</p>
+                            <p><a href={"tel:" + item.phone}>Call Seller</a></p>
+                            <p><a href={"mailto:" + item.email}>Email Seller</a></p>
+                            <p><a href={"sms:" + item.textNumber}>Text Seller</a></p>
                         </div>
                     ))
                 }
+            </div>)
+
+    }
+    return (
+        
+        <div className="App">
+            <h1>Kwik-Links</h1>
+            <div id="mainControls">
+                <button onClick={() => homeClick()}>Home</button>
+                <button onClick={() => searchClick()}>Search</button>
+                <button onClick={() => newClick()}>New</button>
+            
             </div>
+            
+            { state === 'new' ? <NewItem /> : null}
+            
+            { state === 'search' ? <ShowItems /> : null}
+
+
             <AmplifySignOut />
+
         </div>
     );
 }
