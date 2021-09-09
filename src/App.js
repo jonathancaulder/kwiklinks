@@ -7,6 +7,9 @@ import { Auth } from 'aws-amplify';
 import { listItems } from './graphql/queries';
 import { createItem as createItemMutation, deleteItem as deleteItemMutation } from './graphql/mutations';
 import { API, Storage } from 'aws-amplify';
+import ImageList from '@material-ui/core/ImageList'
+import ImageListItem from '@material-ui/core/ImageListItem'
+import TitlebarImageList from './TitlebarImageList';
 
 const initialFormState = { title: '', category: '', description: '', email: '', lat: '', lon: '', latLong: '', phone: '', price: '',textNumber: '', url: '', ownerID: '', image: '', image2: '', image3: '', image4: '', image5: ''}
 
@@ -263,18 +266,17 @@ function App() {
             
             <div style={{ marginBottom: 30 }}>
                 {
-                    items.map(item => (
-                        <div key={item.id || item.title}>
-                            {
-                                item.image && <img src={item.image} style={{ width: 400 }} />
-                            }
-                            <h2>{item.title}</h2>
-                            <p>{item.price}</p>
-                            <p><a href={"tel:" + item.phone}>Call Seller</a></p>
-                            <p><a href={"mailto:" + item.email}>Email Seller</a></p>
-                            <p><a href={"sms:" + item.textNumber}>Text Seller</a></p>
-                        </div>
-                    ))
+                    <TitlebarImageList itemData={items} />
+
+                    /*<ImageList rowHeight={160} className='dummyName' cols={2}>
+                        {items.map((item) => (
+                            <ImageListItem key={item.image} cols={item.cols || 1}>
+                                <img src={item.image} alt={item.description} />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                    */
+                    
                 }
             </div>)
 
