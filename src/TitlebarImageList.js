@@ -41,30 +41,16 @@ const useStyles = makeStyles((theme) => ({
  *   },
  * ];
  */
-export default function TitlebarImageList({itemData}) {
-  const classes = useStyles();
+export default function TitlebarImageList({ itemData }) {
+    const classes = useStyles();
+    function sayHi(image) {
+        alert(image);
+    }
+    return (
+        <div className="classRootName">
 
-  return (
-    <div className="classRootName">
-      <ImageList rowHeight={180} className="myClassName">
-        <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">Items Near You</ListSubheader>
-        </ImageListItem>
-        {itemData.map((item) => (
-          <ImageListItem key={item.image}>
-            <img src={item.image} alt={item.title} />
-            <ImageListItemBar
-              title={item.title}
-              subtitle={<span>Price: {item.price}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${item.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-    </div>
-  );
+            
+
+        </div>
+    )
 }

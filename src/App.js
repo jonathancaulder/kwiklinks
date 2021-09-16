@@ -167,6 +167,19 @@ function App() {
         setState('new');
     }
 
+    function myListItem(item)
+    {
+        return 
+        (
+            <div>
+                <button className="myItem" onClick={function () { alert(item.title); }}>
+                    {this.props.value}
+                </button>
+            </div>
+        )
+    };
+   
+
     function NewItem() {
         return (
             <div>
@@ -265,19 +278,9 @@ function App() {
         return (
             
             <div style={{ marginBottom: 30 }}>
-                {
-                    <TitlebarImageList itemData={items} />
 
-                    /*<ImageList rowHeight={160} className='dummyName' cols={2}>
-                        {items.map((item) => (
-                            <ImageListItem key={item.image} cols={item.cols || 1}>
-                                <img src={item.image} alt={item.description} />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
-                    */
-                    
-                }
+                    <ItemList items={items} />
+ 
             </div>)
 
     }
@@ -303,4 +306,41 @@ function App() {
     );
 }
 
+function ListItem(props)
+{
+    function setState(value) {
+        const state = value;
+        alert(value);
+    }
+    return (
+        <div>
+            <img src={props.image} alt={props.title} height="100px" width="100px" />
+            {props.title}
+            {props.price}
+            &nbsp;&nbsp;&nbsp; <a href='tel:{props.phone}'>Call Now</a>
+            &nbsp;&nbsp;<a href='sms:{props.textNumber}'>Text Now</a>
+            &nbsp;&nbsp;<a href='mailto:{props.email}'>Email Now</a>
+            &nbsp;&nbsp;<a href='{props.url}'>More Info</a>
+            &nbsp;&nbsp;
+            <button
+                className="square"
+                onClick={() => setState({ value: 'X' })}
+            >
+                View Details
+            </button>
+        </div>
+    );
+}
+function ItemList(props) {
+    const myItems = props.items;
+    const myListItems = myItems.map((item) =>
+        <ListItem key={item.id} title={item.title} image={item.image} price={item.price}/>
+        
+    );
+
+        return (
+            <div>{myListItems}</div>
+        );
+
+}
 export default withAuthenticator(App);
